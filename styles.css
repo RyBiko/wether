@@ -8,8 +8,6 @@
     box-sizing: border-box;
 }
 
-
-/* Основные стили для body */
 .main{
     height: 100vh;
     background: rgb(18, 42, 45);
@@ -22,7 +20,6 @@
     background: rgb(18, 42, 45);
     color: rgb(255, 255, 255);
 }
-
 
 
 /* СТИЛИ ДЛЯ ПОЛЯ ПОИСКА */
@@ -68,7 +65,7 @@
     outline: none;
     background-color: rgba(0, 103, 92, 0.7);
     position: absolute;
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 0px 0px 1.5vw 1.5vw;
     box-shadow: 0px 10px 0px rgba(0,0,0, 0.20);
     cursor: pointer;
 
@@ -100,11 +97,10 @@
     font-size: 5vw;
     line-height: 0.7;
     text-align: center;
-    border-radius: 0px 0px 25px 25px;
+    border-radius: 0px 0px 1.5vw 1.5vw;
     background-color: rgb(24, 58, 54);
-    text-shadow: 0px 7px 12px rgb(0, 0, 0);
+    text-shadow: 0px 7px 40px rgb(0, 0, 0);
     box-shadow: 0px 10px 0px rgba(0,0,0, 0.20);
-    -webkit-text-stroke: 1.9px #000000;
 }
 
 /* СТИЛИ ДЛЯ ГОРОДА */
@@ -133,8 +129,7 @@
     transform: translate(-50%);
     font-family: 'Rubik Bubbles', sans-serif;
     font-size: 10.5vw;
-    text-shadow: 0px 7px 12px rgb(0, 0, 0);
-    -webkit-text-stroke: 2.5px #000000;
+    text-shadow: 0px 7px 100px rgb(0, 0, 0);
 }
 
 /* СТИЛИ ДЛЯ ЛИНИИ В ЦЕНТРЕ */
@@ -158,8 +153,7 @@
     transform: translate(-50%);
     font-family: 'Rubik Bubbles', sans-serif;
     font-size: 5vw;
-    text-shadow: 0px 7px 12px rgb(0, 0, 0);
-    -webkit-text-stroke: 1.5px #000000;
+    text-shadow: 0px 7px 40px rgb(0, 0, 0);
 }
 
 /* СТИЛИ ДЛЯ ИНФОРМАЦИИ О ПОГОДЕ */
@@ -180,7 +174,7 @@
     text-shadow: 0px 7px 12px rgb(0, 0, 0);
     border-radius: 80px;
     background-color: rgb(0, 103, 92);
-    text-shadow: 0px 7px 12px rgb(0, 0, 0);
+    text-shadow: 0px 7px 40px rgb(0, 0, 0);
     box-shadow: 0px 10px 0px rgba(0,0,0, 0.20);
 }
 
@@ -195,7 +189,7 @@
     justify-content: center;
     text-align: center;
     width: 8.5vw;
-    height: 17vh;
+    height: 18vh;
     border-radius: 70px;
     background-color: rgb(0, 103, 92);
     box-shadow: 0px 10px 0px rgba(0,0,0, 0.20);
@@ -228,6 +222,8 @@
 :root{
     --fill-wind: 0%;
     --fill-clouds: 0%;
+    --fill-humidity: 0%;
+    --fill-visibility: 0%;
 }
 
 /* СТИЛИ ДЛЯ ИНФОРМАЦИИ О ВЕТРЕ */
@@ -363,4 +359,265 @@
     box-shadow: 0px 10px 0px rgba(0,0,0, 0.20);
     font-family: 'Pacifico', sans-serif;
     font-size: 3vw;
+}
+
+/* СТИЛИ ДЛЯ ИНФОРМАЦИИ О ЗАКАТЕ СОЛНЦА */
+.humidity{
+    position: absolute;
+    top: calc(100vh + 20%);
+    left: 13%;
+    text-shadow: 0px 7px 40px rgb(0, 0, 0);
+    font-family: 'Rubik Bubbles', sans-serif;
+    font-size: 3vw;
+    display: flex;
+    align-items: center;
+
+}
+
+.humidity-bar{
+    position: absolute;
+    top: calc(100vh + 5%);
+    left: 2%;
+    box-shadow: 0px 10px 0px rgba(0,0,0, 0.20);
+    width: 40vw;
+    height: 13vh;
+    border-radius: 80px;
+    background-color: rgb(0, 103, 92);
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.humidity-bar::before{
+    content: "";
+    height: 100%;
+    border-radius: 80px;
+    position: absolute;
+    background-color: rgb(39, 121, 180);
+    left: 0;
+    animation: fillAnimationHumidity 3s forwards;
+}
+
+@keyframes fillAnimationHumidity{
+    0% {
+        width: 0;
+    }
+    100% {
+        width: var(--fill-humidity);
+    }
+}
+
+.humidity-bar span{
+    position: absolute;
+    font-size: 2vw;
+    font-family: 'Rubik Bubbles', sans-serif;
+}
+
+.visibility{
+    position: absolute;
+    top: calc(100vh + 50%);
+    left: 13%;
+    text-shadow: 0px 7px 40px rgb(0, 0, 0);
+    font-family: 'Rubik Bubbles', sans-serif;
+    font-size: 3vw;
+}
+
+.visibility-bar{
+    position: absolute;
+    top: calc(100vh + 35%);
+    left: 2%;
+    box-shadow: 0px 10px 0px rgba(0,0,0, 0.20);
+    width: 40vw;
+    height: 13vh;
+    border-radius: 80px;
+    background-color: rgb(0, 103, 92);
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visibility-bar::before{
+    content: "";
+    height: 100%;
+    border-radius: 80px;
+    position: absolute;
+    background-color: rgb(149, 154, 255);
+    left: 0;
+    animation: fillAnimationVisibility 3s forwards;
+}
+
+@keyframes fillAnimationVisibility{
+    0% {
+        width: 0;
+    }
+    100% {
+        width: var(--fill-visibility);
+    }
+}
+
+.visibility-bar span{
+    position: absolute;
+    font-size: 2vw;
+    font-family: 'Rubik Bubbles', sans-serif;
+}
+
+.pressure{
+    position: absolute;
+    top: calc(100vh + 20%);
+    right: 14%;
+    text-shadow: 0px 7px 40px rgb(0, 0, 0);
+    font-family: 'Rubik Bubbles', sans-serif;
+    font-size: 3vw;
+}
+
+.pressure-bar{
+    position: absolute;
+    top: calc(100vh + 5%);
+    right: 2%;
+    box-shadow: 0px 10px 0px rgba(0,0,0, 0.20);
+    width: 40vw;
+    height: 13vh;
+    border-radius: 80px;
+    background-color: rgb(218, 147, 81);
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pressure-bar span{
+    position: absolute;
+    font-size: 2vw;
+    font-family: 'Rubik Bubbles', sans-serif;
+}
+
+.gust{
+    position: absolute;
+    top: calc(100vh + 50%);
+    right: 10%;
+    text-shadow: 0px 7px 40px rgb(0, 0, 0);
+    font-family: 'Rubik Bubbles', sans-serif;
+    font-size: 3vw;
+}
+
+.gust-bar{
+    position: absolute;
+    top: calc(100vh + 35%);
+    right: 2%;
+    box-shadow: 0px 10px 0px rgba(0,0,0, 0.20);
+    width: 40vw;
+    height: 13vh;
+    border-radius: 80px;
+    background-color: rgb(154, 163, 169);
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gust-bar span{
+    position: absolute;
+    font-size: 2vw;
+    font-family: 'Rubik Bubbles', sans-serif;
+}
+
+.day1{
+    position: absolute;
+    bottom: -100vh;
+    left: 0;
+    width: 15vw;
+    height: 35vh;
+    border-radius: 3vw 3vw 0px 0px;
+    background-color: rgb(255, 93, 64);
+}
+
+.day2{
+    position: absolute;
+    bottom: -100vh;
+    left: 21%;
+    width: 15vw;
+    height: 35vh;
+    border-radius: 3vw 3vw 0px 0px;
+    background-color: rgb(255, 93, 64);
+}
+
+.day3{
+    position: absolute;
+    bottom: -100vh;
+    left: 50%;
+    transform: translate(-50%);
+    width: 15vw;
+    height: 35vh;
+    border-radius: 3vw 3vw 0px 0px;
+    background-color: rgb(255, 93, 64);
+}
+
+.day4{
+    position: absolute;
+    bottom: -100vh;
+    right: 21%;
+    width: 15vw;
+    height: 35vh;
+    border-radius: 3vw 3vw 0px 0px;
+    background-color: rgb(255, 93, 64);
+}
+
+.day5{
+    position: absolute;
+    bottom: -100vh;
+    right: 0%;
+    width: 15vw;
+    height: 35vh;
+    border-radius: 3vw 3vw 0px 0px;
+    background-color: rgb(255, 93, 64);
+}
+
+.date-day1, .date-day2, .date-day3,
+.date-day4, .date-day5{
+    font-size: 1.5vw;
+    text-align: center;
+    font-family: 'Pacifico', sans-serif; 
+}
+
+.week-day1, .week-day2, .week-day3,
+.week-day4, .week-day5{
+    position: relative;
+    top: -5%;
+    font-size: 2vw;
+    text-align: center;
+    font-family: 'Pacifico', sans-serif;
+}
+
+.time-day1, .time-day2, .time-day3,
+.time-day4, .time-day5{
+    position: absolute;
+    margin-top: -1vh;
+    font-size: 1.5vw;
+    font-family: 'Pacifico', sans-serif;
+}
+
+.temp-day1, .temp-day2, .temp-day3,
+.temp-day4, .temp-day5{
+    font-size: 3.5vw;
+    text-align: center;
+    font-family: 'Rubik Bubbles', sans-serif;
+    background-color: rgb(0, 103, 92);
+    text-shadow: 0px 7px 40px rgb(0, 0, 0);
+
+}
+
+.weather-day1, .weather-day2, .weather-day3,
+.weather-day4, .weather-day5{
+    position: relative;
+    top: 5%;
+    font-size: 1.8vw;
+    text-align: center;
+    font-family: 'Rubik Bubbles', sans-serif;
+    text-shadow: 0px 7px 30px rgb(0, 0, 0);
 }
